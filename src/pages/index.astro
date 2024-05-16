@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+const navLink = 'text-base font-semibold transition-colors duration-100 hover:text-blue-600 hover:font-black';
+
+---
+
+<Layout title="DIAS">
+	<main class="text-[white] text-[20px] leading-relaxed">
+	<!-- START: header -->
+	<header class="fixed w-full top-0 left-0 z-50">
+    <div class="mx-auto flex justify-between items-center p-4">
+      <a href="#logo" class="flex items-center text-2xl font-bold no-underline gap-2">
+        <img src="src/assests/dais-logo-crop-removebg-preview.png" alt="logoK" class="h-12 w-12" />
+        <span class="text-[1.2rem] font-bold md:text-[2rem]">DAIS</span>
+      </a>
+
+      <ul id="ul" class="hidden md:flex justify-between items-center gap-6 text-lg max-md:flex">
+        <li class="list-none mr-1"><a href="#home" class={navLink}>Home</a></li>
+        <li class="list-none mr-1"><a href="#about-us" class={navLink}>About Us</a></li>
+        <li class="list-none mr-1"><a href="#academics" class={navLink}>Academics</a></li>
+        <li class="list-none mr-1"><a href="#events" class={navLink}>Events</a></li>
+        <li class="list-none mr-1"><a href="#contact-us" class={navLink}>Contact Us</a></li>
+        <!-- <li><i class="nav-link fa-solid fa-moon"></i></li> -->
+      </ul>
+
+      <div id="hamburger" class="flex md:hidden border-none rounded-md text-base font-semibold py-2 px-3">
+        <i class="fa-solid fa-bars"></i>
+        <!-- <img src="./images/bars-solid.svg" class="fa-solid fa-bars" alt="bars"> -->
+      </div>
+    </div>
+  </header>
+  <!-- END: header -->
+
+	 <!-- START: hero -->
+	 <section id="home" class="home-container">
+    <div class="image-slider-content">
+      <div class="top">
+        <i class="fa-solid fa-angle-left"></i>
+        <div class="slider">
+        <!-- Each image has resolution of 1280px X 720px -->
+        <img src="src/assests/slides/mainimg1.jpg" class="images" alt="image-1">
+        <img src="src/assests/slides/mainimg9.jpg" class="images" alt="image-2">
+        <img src="src/assests/slides/mainimg12.jpg" class="images" alt="image-3">
+        <img src="src/assests/slides/mainimg2.jpg" class="images" alt="image-4">
+        <img src="src/assests/slides/mainimg10.jpg" class="images" alt="image-5">
+        <img src="src/assests/slides/mainimg15.jpg" class="images" alt="image-6">
+        <img src="src/assests/slides/mainimg16.jpg" class="images" alt="image-7">
+      </div>
+      <i class="fa-solid fa-angle-right h-6 w-6"></i>
+      </div>
+      <div class="bottom">
+        <!-- <div class="button"></div>
+        <div class="button"></div>
+        <div class="button"></div>
+        <div class="button"></div> -->
+      </div> 
+    </div>
+   </section>
+  <!-- END: hero -->
+
+	<!-- START: about-us -->
+  <section id="about" class="about-container">
+    <div class="about-content">
+      <div class="main-info">
+        <h2 class="main-title">About Us</h2>
+        <p class="main-description">Dhirubhai Ambani International School is a K-12 co-educational International Day School established in 2003, with a view to offering world-class educational opportunities in the city of Mumbai. The School is affiliated to the CISCE (Council for the Indian School Certificate Examinations) and CAIE (Cambridge Assessment International Education), and prepares students for the ICSE (Indian Certificate of Secondary Education) and the IGCSE (International General Certificate of Secondary Education) Year 10 examinations. For Years 11 and 12, we are authorised by the IB (International Baccalaureate) to offer the IB Diploma Programme. The student body, comprising 1,087 students, reflects the cultural diversity of India. The school has 187 teachers, with 27 being expatriates. With a teacher-student ratio of 1:6, every child enjoys individualised attention. The School is recognised as India's premier international school, and is also among the top IB schools globally.</p>
+      </div>
+    </div>
+
+    <div class="founders-message">
+
+    </div>
+  </section>
+  <!-- END: about-us -->
+	<script>import "../scripts/menu.js"</script>
+	<script src="https://kit.fontawesome.com/1f959912e2.js" crossorigin="anonymous"></script>
+	</main>
+</Layout>
+
+<style>
+@media screen and (max-width: 768px) {
+  .header-container ul.ham_active{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    width: 35%;
+    height: 135vh;
+    gap: 20px;
+    background-color: #13151a;
+  }
+}
+
+
+
+
+
+.home-container {
+  margin-top: 70px;
+  /* border: 5px solid black; */
+}
+
+.image-slider-content {
+  gap: 2px;
+  /* margin-top: 70px; */
+  /* border: 5px solid red; */
+  position: relative; /* Add position relative */
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  /* border: 5px solid green; */
+}
+
+.image-slider-content .fa-solid {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ffffff;
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+  }
+}
+
+.image-slider-content .fa-angle-left {
+  position: absolute;
+  left: 0px;
+  z-index: 2;  /* Set a higher z-index to bring it above images */
+}
+
+.image-slider-content .fa-angle-right {
+  position: absolute;
+  right: 0px;
+}
+
+.slider {
+  width: 100%;
+  height: 250px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  /* border: 5px solid blue; */
+  @media screen and (min-width: 640px) {
+    height: 350px;
+  }
+  @media screen and (min-width: 768px) {
+    height: 510px;
+  }
+}
+
+.images {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all 1s ease;
+}
+
+.bottom {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center;  */
+  gap: 20px;
+  /* border: 5px solid yellow; */
+  position: absolute; /* Added for centering */
+  bottom: 0px; /* Position it at the bottom of the `.image-slider-content` container */
+  width: fit-content;
+  left: 50%; /* Added for centering */
+  transform: translate(-50%) /* Added for centering */
+  @media screen and (min-width: 768px) {
+    gap: 30px;
+  }
+}
+
+.button {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+
+.about-container{
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.about-content{
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.main-info{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-title{
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.main-description{
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+</style>
