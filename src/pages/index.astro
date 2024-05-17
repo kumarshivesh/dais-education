@@ -1,19 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// import { twMerge as tw } from "tailwind-merge";
+import { Image } from "astro:assets"
+import Text from "../components/system/Text.astro";
+import Founder from "../assets/team/nita.png";
+import ViceChairperson from "../assets/team/isha.png";
+
 const navLink = 'text-base font-semibold transition-colors duration-100 hover:text-blue-600 hover:font-black';
 const faSolid = 'text-[30px] md:text-[40px] cursor-pointer';
 const mainInfo = 'flex flex-col gap-4';
 const mainTitle = 'text-2xl font-bold';
-const mainDescription = 'text-base'
+const mainDescription = 'text-base';
+
+const team = [
+  {
+    name: 'Nita Ambani',
+    alt: 'Nita Ambani',
+    image: Founder,
+    designation: 'Founder, DAIS',
+    designationClass: 'text-cp-7',
+    title: "Founder's Message",
+    titleClass: 'text-cp-6',
+    testimonial: 'Every parent would like to have a child whose personality shines wherever the child goes. It is the personality that is appreciated everywhere. Such a pleasing personality is what is the main aim of education.',
+  },
+  {
+    name: 'Isha Ambani',
+    alt: 'Isha Ambani',
+    image: ViceChairperson,
+    designation: 'Vice-Chairperson, DAIS',
+    designationClass: 'text-primary',
+    title: "Vice-Chairperson's Note",
+    titleClass: 'text-primary',
+    testimonial: 'DAIS is the perfect place for the child to blossom to its true and full potential. Our dedicated facilitators guide the children with love and provide an atmosphere for joyful learning. Children are taught concepts with hands on materials for better understanding. At most importance is given for Safety, Cleanliness and Security of the children in an atmosphere that is Serene, Peaceful and Homely.',
+  },
+]
 ---
 
 <Layout title="DIAS">
-	<main class="text-[white] text-[20px] leading-relaxed">
+	<main class="text-[red] text-[20px] leading-relaxed">
 	<!-- START: header -->
 	<header class="fixed w-full top-0 left-0 z-50">
     <div class="mx-auto flex justify-between items-center p-4">
       <a href="#logo" class="flex items-center text-2xl font-bold no-underline gap-2">
-        <img src="src/assests/dais-logo-crop-removebg-preview.png" alt="logoK" class="h-12 w-12" />
+        <img src="src/assets/dais-logo-crop-removebg-preview.png" alt="logoK" class="h-12 w-12" />
         <span class="text-[1.2rem] font-bold md:text-[2rem]">DAIS</span>
       </a>
 
@@ -41,13 +70,13 @@ const mainDescription = 'text-base'
         <i class=`fa-solid fa-angle-left ${faSolid} absolute left-0 z-10`></i>
         <div class="w-full h-[250px] sm:h-[350px] md:h-[510px] shadow-md relative overflow-hidden">
         <!-- Each image has resolution of 1280px X 720px -->
-        <img src="src/assests/slides/mainimg1.jpg" class="images" alt="image-1">
-        <img src="src/assests/slides/mainimg9.jpg" class="images" alt="image-2">
-        <img src="src/assests/slides/mainimg12.jpg" class="images" alt="image-3">
-        <img src="src/assests/slides/mainimg2.jpg" class="images" alt="image-4">
-        <img src="src/assests/slides/mainimg10.jpg" class="images" alt="image-5">
-        <img src="src/assests/slides/mainimg15.jpg" class="images" alt="image-6">
-        <img src="src/assests/slides/mainimg16.jpg" class="images" alt="image-7">
+        <img src="src/assets/slides/mainimg1.jpg" class="images" alt="image-1">
+        <img src="src/assets/slides/mainimg9.jpg" class="images" alt="image-2">
+        <img src="src/assets/slides/mainimg12.jpg" class="images" alt="image-3">
+        <img src="src/assets/slides/mainimg2.jpg" class="images" alt="image-4">
+        <img src="src/assets/slides/mainimg10.jpg" class="images" alt="image-5">
+        <img src="src/assets/slides/mainimg15.jpg" class="images" alt="image-6">
+        <img src="src/assets/slides/mainimg16.jpg" class="images" alt="image-7">
       </div>
       <i class=`fa-solid fa-angle-right ${faSolid} absolute right-0`></i>
       </div>
@@ -70,8 +99,25 @@ const mainDescription = 'text-base'
       </div>
     </div>
 
-    <div class="founders-message">
-
+    <div class="flex flex-row max-lg:flex-col justify-items-start gap-[20px] h-fit max-md:h-auto px-11">
+      {team.map((testimonial, index) => (
+        <div class="flex-1 flex border-[2.5px] border-[#E2E2E2] overflow-hidden flex-row max-md:flex-col w-full bg-white rounded-[12px]">
+          <div class="w-[45%] max-md:w-full max-md:h-[260px] h-auto">
+            <Image src={testimonial.image} alt={testimonial.alt} class="object-cover object-center w-full h-full">
+          </div>
+          <div class="w-[55%] max-md:w-full p-6 flex flex-col justify-between">
+            <div>
+              <Text type="h4" class="text-[37px] leading-[120%] max-lg:text-[25px]" set:html={testimonial.title} />
+              <div class="pt-[12px]" />
+              <Text type="sm" set:html={testimonial.testimonial} />
+            </div>
+            <div>
+              <Text type="sm" class="text-[#121212] text-[24px] font-[500] max-md:font-[600] pt-7">{testimonial.name}</Text>
+              <Text type="sm" class="text-[#121212] font-[500] max-md:mt-[2px]">{testimonial.designation}</Text>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
   <!-- END: about-us -->
