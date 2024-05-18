@@ -1,0 +1,139 @@
+---
+import logo from "../../assets/logo.png";
+import { Image } from "astro:assets";
+
+import facebookIcon from '../../icons/socials/Facebook.svg'
+import instagramIcon from '../../icons/socials/Instagram.svg'
+import linkedinIcon from '../../icons/socials/LinkedIn.svg'
+import twitterIcon from '../../icons/socials/Twitter.svg'
+import youtubeIcon from '../../icons/socials/YouTube.svg'
+import PhoneIcon from '../../icons/Phone.svg'
+import EmailIcon from '../../icons/Email.svg'
+import Text from "../system/Text.astro";
+import { twMerge } from "tailwind-merge";
+import theDotStudioLogo from "../../assets/yt-logo.jpeg";
+
+const socialMediaLinks = {
+  facebook: "https://www.facebook.com/share/ANc7jxNymGJBiemx",
+  instagram: "https://www.instagram.com/ssrbm.rrnagar",
+  linkedin: "https://www.linkedin.com/company/thedotstudio",
+  twitter: "https://twitter.com/thedotstudio",
+  youtube: "https://www.youtube.com/channel/UC9Q6J9Z9Q9Q9Q9Q9Q9Q9Q9Q",
+};
+
+const socialMedia = [
+  {
+    name: "YouTube",
+    icon: youtubeIcon,
+    link: socialMediaLinks.youtube,
+  },
+  {
+    name: "Facebook",
+    icon: facebookIcon,
+    link: socialMediaLinks.facebook,
+  },
+  {
+    name: "Instagram",
+    icon: instagramIcon,
+    link: socialMediaLinks.instagram,
+  },
+  // {
+  //   name: "LinkedIn",
+  //   icon: linkedinIcon,
+  //   link: socialMediaLinks.linkedin,
+  // },
+  // {
+  //   name: "Twitter",
+  //   icon: twitterIcon,
+  //   link: socialMediaLinks.twitter,
+  // },
+];
+
+const footerLinks = [
+  {
+    title: 'Explore',
+    containerClass: 'max-w-[120px] max-md:max-w-[100%]',
+    links: [
+      { label: 'Home', href: '#home' },
+      { label: 'About Us', href: '#about-us' },
+      { label: 'Academics', href: '#academics' },
+      { label: 'Events', href: '#events' },
+      { label: 'Contact Us', href: '#contact-us' }
+    ]
+  },
+  {
+    title: 'Contact Us',
+    containerClass: '',
+    links: [
+      { label: 'admissions@dais.edu.in', href: 'mailto:admissions@dais.edu.in', icon: EmailIcon },
+      { label: '+91 22 35637061', href: 'tel:+917337809948', icon: PhoneIcon },
+    ]
+  }
+]
+
+// const currentDomainBase = Astro.env.DOMAIN_BASE;
+
+const url = `https://www.thedotstudio.in/?utm_source=SchoolWebsite&utm_medium=footer&utm_content=`
+---
+
+
+<div class="p-[60px] max-md:p-[20px] max-md:py-[35px] bg-[#292929] text-white">
+  <div class="flex flex-row max-md:flex-col justify-between">
+    <div class="flex flex-col">
+
+      <div class="w-[118px] max-md:w-[90px]">
+        <Image src={logo} alt="Logo" class='w-full' />
+      </div>
+
+      <div class="flex flex-row max-md:ml-5 md:justify-center gap-[22px] mt-[32px]">
+        {socialMedia.map((social) => (
+          <a href={social.link} target="_blank" rel="noopener noreferrer">
+            <Image src={social.icon} alt={social.name} class="object-contain object-center" />
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="flex flex-row max-md:flex-col"></div>
+
+    <div class="pt-[30px] md:hidden"></div>
+    <div class="flex flex-row max-md:flex-col gap-[24px] max-md:gap-[14px]">
+      {footerLinks.map((footerLinkSection, i) => (
+        <div class={footerLinkSection.containerClass}>
+          <Text type="xs" class="font-[400] text-[#EDE9FE]/50 tracking-[2.4px] mb-[16px] uppercase">{footerLinkSection.title}</Text>
+          <div class="flex flex-col gap-[16px]">
+            {footerLinkSection.links.map(footerLink => (
+              <a href={footerLink.href} class="flex flex-row gap-[8px] items-center hover:underline">
+                {footerLink?.icon && <Image src={footerLink?.icon} alt={footerLink.label} />}
+                <Text type="xs" class="text-white" set:html={footerLink.label}></Text>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class={twMerge("h-full w-[1px] bg-white/20", footerLinks.length - 1 === i && 'hidden')}></div>
+
+      ))}
+    </div>
+  </div>
+
+  <div class="flex flex-row mt-[54px] justify-between items-center max-md:flex-col max-md:mt-[50px] max-md:gap-[10px]">
+    <Text type="xs">Copyright © {new Date().getFullYear()}</Text>
+
+    <a href={url} target="_blank" class="flex flex-row" data-dot-studio-footer>
+      <span>Powered by Tabular Coder</span>
+      <Image src={theDotStudioLogo} class="w-[26px] max-md:w-[20px]" alt={"Website Designed by The Dot Studio"} />
+    </a>
+  </div>
+</div>
+
+
+<script>
+ // get the current domain
+  
+ const currentDomainBase = window.location.origin;
+
+ // Select the element and assert its type
+ const dotStudioLogo = document.querySelector('[data-dot-studio-footer]') as HTMLAnchorElement;
+
+  dotStudioLogo.href = dotStudioLogo.href + currentDomainBase;
+</script>

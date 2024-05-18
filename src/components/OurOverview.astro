@@ -1,0 +1,87 @@
+---
+import { fade } from "astro:transitions";
+import Text from "../components/system/Text.astro";
+import hatsvg from './../icons/ourOverview/hat.svg'
+import likesvg from './../icons/ourOverview/like.svg'
+import globesvg from './../icons/ourOverview/globe.svg'
+import positionsvg from './../icons/ourOverview/position.svg'
+import { Image } from "astro:assets";
+
+interface Fact {
+count : string;
+subtitle : string;
+}
+
+
+const fastFact : Fact[] =[
+    {
+        count : '20+' ,
+        subtitle: 'Years Of Excellence',
+    },
+    {
+        count :'14:1',
+        subtitle: 'Student-Teacher Ratio',
+    },
+    {
+        count :'3000+',
+        subtitle: 'Student Community',
+    },
+    {
+        count :'20+',
+        subtitle: 'Highly Qualified Faculty',
+    }
+]
+
+const fastFact2  = [
+    {
+        icon : hatsvg ,
+        subtitle: 'Entrepreneur <br>  Focused Education',
+    },
+    {
+        icon :likesvg,
+        subtitle: 'Leadership Development',
+    },
+    {
+        icon :globesvg,
+        subtitle: 'Global Perspective',
+    },
+    {
+        icon :positionsvg,
+        subtitle: 'Personalised Attention',
+    }
+]
+
+---
+
+<div class=" w-full  sm:px-[60px] " >
+    <Text type="h2" class="text-primary max-md:mb-8 text-center  font-medium capitalize tracking-[-1.44px] ">
+       <span class="font-lora  relative font-normal tracking-[-1.44px]  bg-gradient-to-r from-[#4A4EBD] to-[#222457] bg-clip-text text-transparent"> Our <div class="h-[17px] w-full absolute -left-1 bottom-1 -z-10 inline-block " style={{
+        background: 'linear-gradient(90deg, rgba(95, 168, 87, 0.00) 0%, rgba(92, 163, 84, 0.25) 5.18%, rgba(95, 168, 87, 0.25) 93.62%, rgba(37, 66, 34, 0.00) 100%)',
+        filter:' blur(1px)'}}></div>
+        </span> Overview
+    </Text>
+    <div class="grid md:grid-cols-4 grid-cols-2 justify-between mt-4 md:mt-[40px]">
+        {
+            fastFact.map(
+                (facts,i,arr)=>
+                <div class={`flex-col pl-[20px] justify-start md:pl-[33px] pt-[34px]  ${i === 2 && 'max-md:border-l-0'} border-dashed flex-1 gap-2 flex ${i !== 0 && 'border-l'} border-b border-red-800`}>
+                    <Text type="h2"  class="text-start font-display tracking-[-1.44px]  font-semibold text-primary flex gap-2 items-center bg-gradient-to-r from-[#4A4EBD] to-[#222457] bg-clip-text text-transparent" set:html={facts.count}>
+                     </Text>
+                    <Text type="lg"  class="text-start font-display tracking-[-0.66px] uppercase font-normal mb-7 text-[22px] max-md:!text-[15px]  text-[#222]  flex gap-2 items-center" set:html={facts.subtitle}>
+                     </Text>
+                </div>
+                 )}
+    </div>
+    <div class="grid md:grid-cols-4 grid-cols-2  flex-wrap">
+        {
+            fastFact2.map(
+                (facts,i,arr)=>
+                <div class={`flex-col pl-[20px] justify-start font-display md:pl-[33px] pt-[34px] border-dashed flex-1 gap-2 flex max-md:border-t ${i === 2 && 'max-md:border-l-0'} ${i !== 0 && 'border-l'}   ${i <= 1 && 'max-md:border-t-0'} border-red-800`}>
+                    <Image src={facts.icon} alt='icon' class="w-[50px] max-md:w-[40px] max-md:h-[50px] h-[50px]"/>
+                    <Text type="lg"  class="text-start tracking-[-0.66px] font-display uppercase font-normal text-[22px] mb-7 max-md:!text-[15px]  text-[#222]  flex gap-2 items-center" set:html={facts.subtitle}>
+                     </Text>
+                </div>
+                 )}
+    </div>
+
+</div>

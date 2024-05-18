@@ -1,5 +1,5 @@
 ---
-// import { twMerge as tw } from "tailwind-merge";
+import { twMerge as tw } from "tailwind-merge";
 import scribble from "../../fillers/scribble.png";
 import type { Code } from "astro:components";
 
@@ -40,6 +40,6 @@ if (!tag) {
 }
 const Tag = tag
 ---
-<Tag>
+<Tag class={tw(classes[type], className)} style={style} {...props}>
   <slot />
 </Tag>

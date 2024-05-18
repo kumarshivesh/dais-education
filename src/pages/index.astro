@@ -1,16 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-// import { twMerge as tw } from "tailwind-merge";
-import { Image } from "astro:assets"
+import Footer from '../components/templates/Footer.astro';
+import { twMerge as tw } from "tailwind-merge";
+import { Image } from "astro:assets";
+import "../global.css";
+
 import Text from "../components/system/Text.astro";
+import PracticeBook from '../components/utils/PracticeBook.astro'
+import Section from "../components/system/Section.astro";
+
 import Founder from "../assets/team/nita.png";
 import ViceChairperson from "../assets/team/isha.png";
+import FancyLine from '../assets/decorations/line.svg'
+import OurOverview from '../components/OurOverview.astro';
 
 const navLink = 'text-base font-semibold transition-colors duration-100 hover:text-blue-600 hover:font-black';
 const faSolid = 'text-[30px] md:text-[40px] cursor-pointer';
 const mainInfo = 'flex flex-col gap-4';
-const mainTitle = 'text-2xl font-bold';
-const mainDescription = 'text-base';
+const mainTitle = 'text-2xl font-bold font-display italic';
+const mainDescription = 'text-base font-sans';
 
 const team = [
   {
@@ -37,12 +45,12 @@ const team = [
 ---
 
 <Layout title="DIAS">
-	<main class="text-[red] text-[20px] leading-relaxed">
+	<main class="text-[#000000] text-[20px] leading-relaxed">
 	<!-- START: header -->
-	<header class="fixed w-full top-0 left-0 z-50">
+	<header class="fixed w-full top-0 left-0 z-50 bg-[#fdfdfd]">
     <div class="mx-auto flex justify-between items-center p-4">
       <a href="#logo" class="flex items-center text-2xl font-bold no-underline gap-2">
-        <img src="src/assets/dais-logo-crop-removebg-preview.png" alt="logoK" class="h-12 w-12" />
+        <img src="src/assets/logo.png" alt="logoK" class="h-12 w-12" />
         <span class="text-[1.2rem] font-bold md:text-[2rem]">DAIS</span>
       </a>
 
@@ -99,21 +107,21 @@ const team = [
       </div>
     </div>
 
-    <div class="flex flex-row max-lg:flex-col justify-items-start gap-[20px] h-fit max-md:h-auto px-11">
+    <div class="flex flex-row max-lg:flex-col justify-items-start gap-[20px] h-fit max-md:h-auto px-11 mt-[20px]">
       {team.map((testimonial, index) => (
-        <div class="flex-1 flex border-[2.5px] border-[#E2E2E2] overflow-hidden flex-row max-md:flex-col w-full bg-white rounded-[12px]">
+        <div data-gsap data-delay={0.3 + index * 0.3} data-y={100} data-duration={0.7}  class="flex-1 flex border-[2.5px] border-[#E2E2E2] overflow-hidden flex-row max-md:flex-col w-full bg-white rounded-[12px]">
           <div class="w-[45%] max-md:w-full max-md:h-[260px] h-auto">
-            <Image src={testimonial.image} alt={testimonial.alt} class="object-cover object-center w-full h-full">
+            <Image src={testimonial.image} alt={testimonial.alt} class="object-cover object-center w-full h-full" />
           </div>
           <div class="w-[55%] max-md:w-full p-6 flex flex-col justify-between">
             <div>
-              <Text type="h4" class="text-[37px] leading-[120%] max-lg:text-[25px]" set:html={testimonial.title} />
+              <Text type="h4" class={tw(testimonial.titleClass, "text-[37px] leading-[120%] max-lg:text-[25px]")} set:html={testimonial.title} />
               <div class="pt-[12px]" />
               <Text type="sm" set:html={testimonial.testimonial} />
             </div>
             <div>
-              <Text type="sm" class="text-[#121212] text-[24px] font-[500] max-md:font-[600] pt-7">{testimonial.name}</Text>
-              <Text type="sm" class="text-[#121212] font-[500] max-md:mt-[2px]">{testimonial.designation}</Text>
+              <Text type="sm" class={tw('text-[#121212] text-[24px] font-[500] max-md:font-[600] pt-7')}>{testimonial.name}</Text>
+              <Text type="sm" class={tw('text-[#121212] font-[500] max-md:mt-[2px]', testimonial.designationClass)}>{testimonial.designation}</Text>
             </div>
           </div>
         </div>
@@ -121,6 +129,55 @@ const team = [
     </div>
   </section>
   <!-- END: about-us -->
+
+  <!-- START: our-overview -->
+  <div class=" flex  w-full mt-12 md:mt-[84px] justify-center md:px-[60px]  px-5" >
+    <OurOverview/>
+  </div>
+  <!-- END: our-overview -->
+  
+
+  <!-- START: the-dais-community -->
+  <Section class="px-0" class="flex flex-col items-center pb-0 mt-0 lg:mt-[60px]">
+    <Text type="h2" class="font-[400] text-cp-4 [&_.line]:!inline text-center" id="ssrvm-community"><span data-text>The DAIS</span><span></span> <PracticeBook class="border-cp-1"><span class="font-bold italic text-cp-1">Community</span></PracticeBook></Text>
+    <Image src={FancyLine} alt="Fancy Line" class="w-[252px] my-[26px]" data-gsap data-delay={0.6} data-target="#ssrvm-community" data-duration={1.9} />
+    <Text type="base" class="w-[84%] text-center" data-lines data-delay={0.8} data-target="#ssrvm-community">For 25+ years, our community cultivates knowledge, values, and resilience across India, weaving tradition with modernity for a transformative educational future.</Text>
+    <div class="pt-[26px]"></div>
+    <div class="flex flex-row items-center gap-12 max-lg:gap-[30px] max-lg:flex-col">
+
+      <div class="flex flex-row max-lg:gap-[40px] gap-12 flex-shrink-0">
+        <div class="text-cp-1 flex flex-col items-center max-md:text-[50px]" data-delay={0.1 + 0.4} data-y={60} data-target="#ssrvm-community" data-gsap>
+          <Text type="h3" class="italic text-[71px] max-md:text-[46px]">25</Text>
+          <Text type="base" class="uppercase mt-[5px] font-bold text-center tracking-[2.25px]">Years of<br/> Excellence</Text>
+        </div>
+        <div class="text-cp-4 flex flex-col items-center" data-delay={0.2 + 0.4} data-y={60} data-target="#ssrvm-community" data-gsap>
+          <Text type="h3" class="italic text-[71px] max-md:text-[46px]">14+</Text>
+          <Text type="base" class="uppercase mt-[5px] font-bold text-center tracking-[2.25px]">States In<br/> India</Text>
+        </div>
+      </div>
+
+      <div class="flex flex-row gap-[40px] md:gap-12">
+        <div class="text-cp-3 flex flex-col items-center" data-delay={0.3 + 0.4} data-y={60} data-target="#ssrvm-community" data-gsap>
+          <Text type="h3" class="italic text-[71px] max-md:text-[46px]" >40,000+</Text>
+          <Text type="base" class="uppercase mt-[5px] font-bold text-center tracking-[2.25px]">Students</Text>
+        </div>
+        <div class="text-cp-2 flex flex-col items-center" data-delay={0.4 + 0.4} data-y={60} data-target="#ssrvm-community" data-gsap>
+          <Text type="h3" class="italic text-[71px] max-md:text-[46px]">2500+</Text>
+          <Text type="base" class="uppercase mt-[5px] font-bold text-center tracking-[2.25px]">Teachers</Text>
+        </div>
+      </div>
+
+      <div class="text-cp-8 flex flex-col items-center" data-delay={0.5 + 0.4} data-y={60} data-target="#ssrvm-community" data-gsap>
+        <Text type="h3" class="italic text-[71px] max-md:text-[46px]">90+</Text>
+        <Text type="base" class="uppercase mt-[5px] font-bold text-center tracking-[2.25px] flex-shrink-0">Institutions<br/> including DAIS</Text>
+      </div>
+    </div>
+
+    <div class="mt-[65px] max-md:mt-[45px]">
+    </div>
+  </Section>
+  <!-- END: the-dais-community -->
+  <Footer />
 	<script>import "../scripts/menu.js"</script>
 	<script src="https://kit.fontawesome.com/1f959912e2.js" crossorigin="anonymous"></script>
 	</main>
@@ -139,7 +196,7 @@ const team = [
     width: 35%;
     height: 135vh;
     gap: 20px;
-    background-color: #13151a;
+    background-color: #fdfdfd;
   }
 }
 
