@@ -5,6 +5,8 @@ import { twMerge as tw } from "tailwind-merge";
 import { Image } from "astro:assets";
 import "../global.css";
 
+import logo from '../assets/logo.png'
+
 import Section from "../components/system/Section.astro";
 import Text from "../components/system/Text.astro";
 import PracticeBook from '../components/utils/PracticeBook.astro';
@@ -66,7 +68,7 @@ const team = [
 	<header class="fixed w-full top-0 left-0 z-50 bg-[#fdfdfd]">
     <div class="mx-auto flex justify-between items-center p-4">
       <a href="#logo" class="flex items-center text-2xl font-bold no-underline gap-2">
-        <img src="src/assets/logo.png" alt="logoK" class="h-12 w-12" />
+        <Image src={logo} alt="logoK" class="h-12 w-12" />
         <span class="text-[1.2rem] font-bold md:text-[2rem]">DAIS</span>
       </a>
 
