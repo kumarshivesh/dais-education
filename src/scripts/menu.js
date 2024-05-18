@@ -131,11 +131,11 @@ const stopSlideShow = () => {
 
 startSlideShow()
 
-slider.addEventListener('mouseover', stopSlideShow)
-slider.addEventListener('mouseout', startSlideShow)
-right.addEventListener('mouseover', stopSlideShow)
-right.addEventListener('mouseout', startSlideShow)
-left.addEventListener('mouseover', stopSlideShow)
-left.addEventListener('mouseout', startSlideShow)
+// slider.addEventListener('mouseover', stopSlideShow)
+// slider.addEventListener('mouseout', startSlideShow)
+// right.addEventListener('mouseover', stopSlideShow)
+// right.addEventListener('mouseout', startSlideShow)
+// left.addEventListener('mouseover', stopSlideShow)
+// left.addEventListener('mouseout', startSlideShow)
 
 // <!--END: Logic for Auto Sliding-->

@@ -2,6 +2,7 @@
 interface Props {
 	title: string;
 }
+import globalCSS from "../global.css?url"
 
 const { title } = Astro.props;
 ---
@@ -15,6 +16,20 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/png+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+		<link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="preload" as="style">
+		<link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+		<link rel="preload" href={globalCSS} as="style">
+		<link rel="stylesheet" href={globalCSS}>
+
+		<script async
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAW4mmhYRbPA2nPi-wzuJBPalXSuInbKks&loading=async&libraries=places">
+		</script>
+
 	</head>
 	<body>
 		<slot />

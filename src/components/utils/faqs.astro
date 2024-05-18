@@ -1,0 +1,46 @@
+---
+import Collapsible from "../system/Collapsible.astro";
+import Text from '../system/Text.astro'
+
+const faqs = [
+{
+    question: "What is IGCSE?",
+    answer: `
+    IGCSE stands for International General Certificate of Secondary Education. It is a globally recognized qualification for students typically aged 14-16 years.
+    `,
+  },
+  {
+    question: "Why is RIMS the best school for IGCSE?",
+    answer: `
+    RIMS International School is one of the most preferred IGCSE schools in Mumbai because of its wide range of subject selection, 14:1 student-teacher ratio, industry-relevant curriculum and exposure, and much more.
+    `,
+  },
+
+];
+---
+
+<div class="flex flex-col items-center gap-5">
+  {
+    faqs.map(({ question, answer }) => (
+      <Collapsible
+        title={question}
+        titleClass="font-sans font-bold text-xl max-md:text-lg"
+        class="mb-5"
+        collapseGroup="collapsible"
+        plusButtonClass="w-[35px] h-[35px] ml-1"
+      >
+        <Text
+          type={"regular"}
+          set:html={answer}
+          class="[&>a]:underline [&>a]:text-blue-700"
+        />
+      </Collapsible>
+    ))
+  }
+</div>
+
+<style>
+  .listtype{
+
+  }
+</style>

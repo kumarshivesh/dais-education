@@ -5,9 +5,11 @@ import { twMerge as tw } from "tailwind-merge";
 import { Image } from "astro:assets";
 import "../global.css";
 
-import Text from "../components/system/Text.astro";
-import PracticeBook from '../components/utils/PracticeBook.astro'
 import Section from "../components/system/Section.astro";
+import Text from "../components/system/Text.astro";
+import PracticeBook from '../components/utils/PracticeBook.astro';
+import Faqs from '../components/utils/faqs.astro'
+
 
 import Founder from "../assets/team/nita.png";
 import ViceChairperson from "../assets/team/isha.png";
@@ -136,7 +138,6 @@ const team = [
   </div>
   <!-- END: our-overview -->
   
-
   <!-- START: the-dais-community -->
   <Section class="px-0" class="flex flex-col items-center pb-0 mt-0 lg:mt-[60px]">
     <Text type="h2" class="font-[400] text-cp-4 [&_.line]:!inline text-center" id="ssrvm-community"><span data-text>The DAIS</span><span></span> <PracticeBook class="border-cp-1"><span class="font-bold italic text-cp-1">Community</span></PracticeBook></Text>
@@ -177,8 +178,27 @@ const team = [
     </div>
   </Section>
   <!-- END: the-dais-community -->
+
+  <!-- START: FAQs -->
+  <div class="w-full items-center flex flex-col mb-5 bg-white">
+    <div class="p-4"></div>
+    <Text type={"subtitle"} class="text-black/60">THINGS TO NOTE</Text>
+    <Text type={"h2"} class="mt-2 text-[#282828] tracking-[-1.44px] font-semibold">FAQs</Text>
+    <div class="p-4"></div>
+    <Faqs />
+    <div class="p-3"></div>
+  </div>
+  <!-- END: FAQs -->
+
   <Footer />
-	<script>import "../scripts/menu.js"</script>
+	<script>
+   import "../scripts/menu.js";
+   import collapsible, {
+    openCollapsible,
+  } from "../components/system/collapsible";
+  collapsible(".collapsible", null);
+  </script>
+
 	<script src="https://kit.fontawesome.com/1f959912e2.js" crossorigin="anonymous"></script>
 	</main>
 </Layout>
