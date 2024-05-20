@@ -1,45 +1,173 @@
 ---
-import { twMerge as tw } from "tailwind-merge";
-import scribble from "../../fillers/scribble.png";
-import type { Code } from "astro:components";
 
 interface Props {
-  type:
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "base"
-    | "lg"
-    | "sm"
-    | "xs"
-    | "subtitle"
-  class?: string;
-  style?: {};
-  tag?: string;
+  type: 'h1' | 'h2' | 'h3' | 'h4' | 'base' | 'lg' | 'regular' | 'sm' | 'xs' | 'subtitle'| 'minH3' | 'minH1'
+  class?: string,
+  style?: {}
 }
 
-let { type = "base", tag = null, class: className, style = {}, ...props } = Astro.props;
-const classes = {
-  h1: "font-display font-[700] text-[81px] max-md:text-[2rem] leading-[120%]",
-  h2: "font-display font-[700] text-[81px] max-md:text-[2.5rem] leading-[120%]",
-  h3: "text-[51px] font-display font-[700] max-md:text-3xl leading-[120%]",
-  h4: "text-[32px] font-display font-[700] max-md:text-3xl leading-[120%]",
-  base: "text-[22.5px] font-sans max-md:text-base",
-  lg: "text-[24px] font-sans max-md:text-base",
-  sm: "text-[19.5px] font-sans leading-[140%] max-md:text-sm",
-  xs: "text-[15px] font-sans",
-  subtitle: "text-[24px] font-sans max-md:text-[18px] uppercase font-bold tracking-[2.4px] text-center",
-}
-if (!tag) {
-  if (type === "h1" || type === "h2" || type === "h3") {
-    tag = type;
-  } else {
-    tag = "p";
-  }
-}
-const Tag = tag
+const { type = 'base', class: className, style = {}, ...props } = Astro.props
+
 ---
-<Tag class={tw(classes[type], className)} style={style} {...props}>
+
+{type === 'h1' && (
+  <h1
+    class:list={[
+      "font-display font-[700] text-[64px] tracking-tight max-md:text-[2rem] [&>span]:[#BE2F35]", 
+      className
+    ]}
+    style={style}
+    {...props}
+  >
+    <slot />
+  </h1>
+)}
+
+{type === 'minH1' && (
+  <h1
+    class:list={[
+      "font-display font-[700] text-[59px] tracking-tight max-md:text-[2rem] [&>span]:[#BE2F35]", 
+      className
+    ]}
+    style={style}
+    {...props}
+  >
+    <slot />
+  </h1>
+)}
+
+{type === 'h2' && (
+  <h2
+    class:list={[
+      "font-display font-[700] text-[48px] leading-[120%] tracking-tight max-md:text-[2rem] [&>span]:[#BE2F35]", 
+      className
+    ]}
+    style={style}
+    {...props}
+
+  >
+    <slot />
+  </h2>
+)}
+{type === 'h3' && (
+  <h3
+    class:list={[
+      "text-[32px]  tracking-tight font-display max-md:text-2xl tracking-[-1.6px] [&>span]:[#BE2F35]", 
+      className
+    ]}
+    style={style}
+    {...props}
+
+  >
+    <slot />
+  </h3>
+)}
+{type === 'minH3' && (
+<h3
+  class:list={[
+    "text-[36px] font-[700] tracking-tight leading-[110%] font-display max-md:text-2xl tracking-[-1.6px] [&>span]:[#BE2F35]", 
+    className
+  ]}
+  style={style}
+  {...props}
+
+>
   <slot />
-</Tag>
+</h3>
+)}
+{type === 'h4' && (
+  <h2
+    class:list={[
+      "text-[28px] font-[700] tracking-tight leading-[110%] font-display  tracking-[-1.6px] [&>span]:[#BE2F35]", 
+      className
+    ]}
+    style={style}
+    {...props}
+
+  >
+    <slot />
+  </h2>
+)}
+
+{type === 'lg' && (
+  <div
+    class:list={[
+      "text-[24px] font-[400]", 
+      className
+    ]}
+    class="max-md:text-lg"
+    style={style}
+    {...props}
+  >
+    <slot />
+  </div>
+)}
+{type === 'base' && (
+  <div
+    class:list={[
+      "text-[20px] max-md:text-[18px] font-[400]", 
+      className
+    ]}
+    style={style}
+    {...props}
+
+  >
+    <slot />
+  </div>
+)}
+{
+  type === 'regular' && (
+  <div
+    class:list={[
+      "text-lg max-md:text-base", 
+      className
+    ]}
+    style={style}
+    {...props}
+  >
+    <slot />
+  </div>
+  )
+}
+
+{type === 'sm' && (
+  <div
+    class:list={[
+      "text-[20px] max-md:text-[16px] font-[400] leading-[120%]", 
+      className
+    ]}
+    style={style}
+    {...props}
+  >
+    <slot />
+  </div>
+)}
+
+{type === 'xs' && (
+  <div
+    class:list={[
+      "text-[15px] font-display font-[400] max-md:text-[13px]", 
+      className
+    ]}
+    style={style}
+    {...props}
+  >
+    <slot />
+  </div>
+)}
+
+{type === 'subtitle' && (
+    <div
+      class:list={[
+        "text-[24px] max-md:text-base font-[400] uppercase text-[rgba(35,31,32,0.70)] opacity-80",
+        className
+      ]}
+      style={{ 
+        letterSpacing: '0.1em', 
+        ...style
+      }}
+      {...props}
+    >
+      <slot />
+    </div>
+)}

@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import quote1 from '../../icons/quoteIcon/quote1.png'
+import quote2 from '../../icons/quoteIcon/quote2.png'
+import Text from "../system/Text.astro";
+import Ticker from "../utils/Ticker.astro";
+
+import testimonialbg from '../../images/testimonial/testimonialbg.png'
+
+import ourVisionIcon2 from "../../images/ourVision/ourVisionIcon2.png"
+
+const info = [
+  {
+    title: "Mohan",
+    subTitle: "Parent of Mohan",
+    description: "We take this opportunity to convey you that we are very happy with the school. We appreciate you for maintaining high standards in the school environment .Last but not the least, the transport setup is very good, I can track my child also."
+  },
+
+  {
+    title: "Gopalakrishnan",
+    subTitle: "Parent of Gopalakrishnan",
+    description: "The individual attention given to the children is really appreciated and further the way kids are tracked by their teachers helps a lot for their progress. The vast campus of NPS Agara is where the kids feel great and proud to be in.. Feel happy to be a part of the school."
+  },
+
+  {
+    title: "Umesh",
+    subTitle: "Parent of Umesh",
+    description: "Feel Proud on my decision in selecting NPS Agara , it's the best school in south Bangalore perfect ambience for positive learning , spacious play area which strengthens the overall development of a child Thanks to the team of NPS Agara for their excellent work in moulding each student."
+  },
+
+  {
+    title: "Cariyappa MA",
+    subTitle: "Parent of Cariyappa MA",
+    description: "I, the parent of M.C.Upaksh of grade 8, feel proud to share that we are a part of NPS family. I wholeheartedly thank the management and their entire teaching faculty for their continuous support and encouragement."
+  },
+
+  {
+    title: "Prashanthi P",
+    subTitle: "Parent of Prashanthi P",
+    description: "The different programs/activities held at NPS Agara are wonderful and each program is a new learning experience to children, as well as parents. Energetic teachers who will no doubt encourage their students to achieve their maximum potential and make them achievers."
+  },
+
+  {
+    title: "Shivanand Bekinal",
+    subTitle: "Parent of Shivanand Bekinal",
+    description: "Great School, She has made leaps and bounds academically and overall personality. She is safe, phenomenal experience, changing the world of education. This place is amazing, it’s worth it and I am lucky to have found it."
+  },
+]
+---
+
+<div class="flex flex-col gap-4 items-center justify-center relative">
+    <div class="flex flex-row gap-[50px] max-md:gap-[25px] items-center">
+        <div class="w-[84px] h-[67px] max-md:w-[55px] max-md:h-[45px]">
+            <Image src={quote1} alt="opening quote" class="w-full object-cover object-center"/>
+        </div>
+
+        <Text type="h1" class="text-[70px] leading-[120%] !-tracking-[1.4px] text-center !font-[gothamMedium] font-[600]">Our <span class="text-[#E84855]">Testimonials</span></Text>
+
+        <div class="w-[84px] h-[67px] max-md:w-[55px] max-md:h-[45px]">
+            <Image src={quote2} alt="closing quote" class="w-full object-cover object-center"/>
+        </div>
+    </div>
+
+      <Ticker items={info}/>
+
+      <Image src={ourVisionIcon2} alt="testimonial bg" class="absolute -bottom-[40%] right-0 rotate-[90deg]"/>
+</div>

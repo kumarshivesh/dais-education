@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import Text from "../system/Text.astro";
+import image1 from '../../images/ourCampus/tcisHarlur(L).png'
+import image2 from '../../images/ourCampus/tcisHarlur.png'
+import locationSvg from  '../../images/ourCampus/locationIcon.svg'
+---
+
+<div class=" w-full flex items-center flex-col">
+   <div class="text-center md:w-[784px] md:px-2 mt-5 md:mt-0">
+    <Text type="base" class="text-[#1C1C1C] tracking-[4.8px] font-bold"> OUR CAMPUSES </Text>
+    <Text type="h2" class="font-bold "> <span class="text-[#BE2F35]">Diverse Learning </span>Environments </Text>
+    <Text type="base" class="font-normal mt-2 md:mt-4"> At TCIS, we prioritize practical learning that encourages children to explore and interact with the world consciously. </Text>
+   </div>
+   <div class="grid md:grid-cols-2 md:px-5 grid-cols-1 gap-3 mt-10 md:mt-[60px]">
+    <div class=" xl:w-full lg:w-[395px] relative md:h-[370px]">
+      <Image src={image2} alt='tcisWhitefield' class="object-cover object-left w-full h-full"/> 
+      <div class="absolute md:left-[40px] md:bottom-[40px] left-[20px] bottom-[10px]  md:gap-[12px] text-white flex flex-col">
+        <span class="flex items-center gap-2">
+             <Image src={locationSvg} alt="" class="md:w-auto w-5"/>
+             <Text type="sm" class="tracking-wider"> Harlur </Text>
+      </span> 
+              <Text type="minH3"> TCIS <span class="text-[#F45542]"> Harlur</span> </Text>
+      </div>
+  </div>
+  
+    <div class=" xl:w-full lg:w-[395px] relative md:h-[370px]">
+        <Image src={image1} alt='tcisWhitefield' class="object-cover object-left w-full h-full"/> 
+        <div class="absolute md:left-[40px] md:bottom-[40px] left-[20px] bottom-[10px]  md:gap-[12px] text-white flex flex-col">
+          <span class="flex items-center gap-2">
+               <Image src={locationSvg} alt="" class="md:w-auto w-5"/>
+               <Text type="sm" class="tracking-wider"> Varthur </Text>
+        </span> 
+                <Text type="minH3"> TCIS <span class="text-[#F45542]"> Whitefield</span> </Text>
+        </div>
+         
+    </div>
+
+   </div>
+</div>

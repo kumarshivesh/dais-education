@@ -74,7 +74,7 @@ module.exports = {
 
 		},
 		fontFamily: {
-			'display': ['"Playfair Display"', 'sans-serif'],
+			display: ['Playfair Display', 'sans-serif'],
 			sans: ['"Avenir"', "sans-serif"],
 		}
 	},

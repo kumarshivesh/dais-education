@@ -19,18 +19,24 @@ import slide2 from "../img/slides/2.jpeg";
 import slide3 from "../img/slides/3.png";
 import slide4 from "../img/slides/4.jpg";
 
+import AcademicCard from '../components/AcademicCard.astro';
+
 import slide1MB from "../img/slides/mb/mb1.png";
 import slide2MB from "../img/slides/mb/mb2.png";
 import slide3MB from "../img/slides/mb/mb3.png";
 import slide4MB from "../img/slides/mb/mb4.png";
 import NpsLogo from "../img/NPS-favIcon.png";
 import bgNpsLogo from "../img/bgNpsLogo.png"
+import ourVisionIcon1 from "../images/ourVision/ourVisionIcon1.png"
+import ourVisionIcon2 from "../images/ourVision/ourVisionIcon2.png"
 
+import {cardData} from '../utils.ts'
 
 import Founder from "../assets/team/nita.png";
 import ViceChairperson from "../assets/team/isha.png";
 import FancyLine from '../assets/decorations/line.svg'
 import OurOverview from '../components/OurOverview.astro';
+import BentoGrid from '../components/landingPage/BentoGrid.astro';
 
 const navLink = 'text-base font-semibold transition-colors duration-100 hover:text-blue-600 hover:font-black';
 const faSolid = 'text-[30px] md:text-[40px] cursor-pointer';
@@ -65,7 +71,7 @@ const team = [
 <Layout title="DIAS">
 	<main class="text-[#000000] text-[20px] leading-relaxed">
 	<!-- START: header -->
-	<header class="fixed w-full top-0 left-0 z-50 bg-[#fdfdfd]">
+	<header class="fixed w-full top-0 left-0 z-50 bg-[#fdfdfd] font-display font-black">
     <div class="mx-auto flex justify-between items-center p-4">
       <a href="#logo" class="flex items-center text-2xl font-bold no-underline gap-2">
         <Image src={logo} alt="logoK" class="h-12 w-12" />
@@ -190,6 +196,14 @@ const team = [
   </section>
   <!-- END: about-us -->
 
+  <!-- START: our-vision -->
+  <div class="w-full relative">
+    <Image src={ourVisionIcon1} alt="ourVisionIcon1" class=" absolute top-0 left-5 max-md:hidden" width={326}/>
+    <BentoGrid/>
+      <Image src={ourVisionIcon2} alt="ourVisionIcon1" class=" absolute top-0 -right-8 max-md:hidden" width={426}/>
+  </div>
+  <!-- END: our-vision -->
+
   <!-- START: our-overview -->
   <div class=" flex  w-full mt-12 md:mt-[84px] justify-center md:px-[60px]  px-5" >
     <OurOverview/>
@@ -237,6 +251,29 @@ const team = [
   </Section>
   <!-- END: the-dais-community -->
 
+  <!-- START: academic-landscape -->
+  <div class="pt-8">
+    <div class="w-full h-full flex flex-col text-center pt-10 md:pt-5 px-3 justify-center">
+      <Text type='h2' class='text-[60px] !-tracking-[1.2px] !font-[gothamMedium] font-[600] pt-2'>Academic<span class="text-[#E84855]"> Landscape</span></Text>
+      </div>
+
+      <div class="flex pb-5 justify-center">
+          <div class="grid lg:grid-cols-3 gap-6 md:gap-16 py-5 md:py-10 px-3 text-white ">
+            {cardData.map((data,i) => (
+               <AcademicCard
+                    link={data.link}
+                    title={data.title}
+                    subTitle={data.subTitle}
+                    description={data.description}
+                    image={data.image}
+                  />)
+              )}
+          </div>
+
+      </div>
+  </div>
+  <!-- END: academic-landscape -->
+
   <!-- START: FAQs -->
   <div class="w-full items-center flex flex-col mb-5 bg-white">
     <div class="p-4"></div>
@@ -275,38 +312,6 @@ const team = [
     height: 135vh;
     gap: 20px;
     background-color: #fdfdfd;
-  }
-}
-
-.images {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: all 1s ease;
-}
-
-.bottom {
-  display: flex;
-  gap: 20px;
-  position: absolute; 
-  bottom: 0px; 
-  width: fit-content;
-  left: 50%; 
-  transform: translate(-50%) 
-  @media screen and (min-width: 768px) {
-    gap: 30px;
-  }
-}
-
-.button {
-  width: 12px;
-  height: 12px;
-  border: 1px solid #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-  @media screen and (min-width: 768px) {
-    width: 15px;
-    height: 15px;
   }
 }
 </style>

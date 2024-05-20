@@ -1,0 +1,157 @@
+---
+import Constrain from "../system/Constrain.astro";
+import Text from "../system/Text.astro";
+import { Image } from "astro:assets";
+// import blobBG from "../../images/Patterns/Group-6.png";
+import Gallery from "../utils/Gallery.astro";
+
+import Library from "../../image/facilities/temp.png";
+// import PhysicsLab from "../../image/facilities/PhysicsLab.jpg";
+// import ChemistryLab from "../../image/facilities/ChemistryLab.jpg";
+// import SeniorComputerLab from "../../image/facilities/SeniorComputerLab.jpg";
+// import juniorComputerLab from "../../image/facilities/juniorComputerLab.jpg";
+// import ATLab2 from "../../image/facilities/ATLLAB.jpg";
+// import classrooms from "../../image/facilities/PPClassrooms.jpg";
+// import basketball from "../../image/facilities/Basketball.png";
+// import counsellingRoom from "../../image/facilities/CounsellingRoom.jpg";
+// import biologyLab from "../../image/facilities/BiologyLab.jpg";
+// import prePrimaryActivityRoom from "../../image/facilities/PrePrimaryActivityRoom.png";
+// import badminton from "../../image/facilities/badminton.jpg";
+// import cricket from "../../image/facilities/cricket.jpg";
+// import literaryAndEcoClub from "../../image/facilities/literaryAndEcoClub.jpg";
+// import debateClub from "../../image/facilities/debateClub.jpg";
+
+import Button from "../system/Button.astro";
+import YoutubeEmbed from "../YoutubeEmbed.astro";
+import DeckCard2 from "../utils/DeckCard2.astro";
+
+const starSVG = (
+  color = "#0A5E2F"
+) => `<svg width="100%" height="100%" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path id="Vector" d="M9.19531 0.136719L7.39532 6.53672L0.195312 8.13672L7.39532 9.73672L9.19531 16.1367L10.9953 9.73672L18.1953 8.13672L10.9953 6.53672L9.19531 0.136719Z" fill="${color}"/>
+  </svg>
+`;
+
+const starEarthy = starSVG("#707861");
+---
+
+<div
+  class="py-14 max-md:py-8 relative text-center flex flex-col items-center"
+  style={{
+    background:
+      "linear-gradient(249.28deg, #FBFFF7 0%, #F6FFED 0%, #FFFAF7 100%)",
+  }}
+>
+  <div class="w-[263px] h-[279px] absolute right-0 top-0 z-20 max-md:hidden">
+    <Image
+      src={Library}
+      alt="Blob Background"
+      class="w-full h-full object-contain object-right opacity-10"
+    />
+  </div>
+  <div class="p-2 max-md:p-1"></div>
+  <!-- <Text type={'subtitle'} style={{ opacity: 0.8, color: '#121212' }}>WHY SSRVM?</Text> -->
+  <Text type={"h2"} class="text-black mt-3 max-md:mt-4">
+    Nature-friendly <span>Campus</span>
+  </Text>
+  <Text
+    type={"base"}
+    class="mt-4 font-medium text-black w-[60%] max-md:w-[90%]"
+  >
+    Nestled within greenery, our campus provides a stress-free environment.
+    Complemented by our open classrooms, it offers a unique blend of nature and
+    modern education.
+  </Text>
+  <p class="p-3"></p>
+  <Constrain class="flex flex-col w-full items-center gap-8">
+    <div
+      class="flex flex-row gap-24 items-center w-full justify-center mt-6 text-black max-w-[1070px] max-md:w-full max-md:flex-col max-md:items-center"
+    >
+    <DeckCard2
+        images={[Library, Library]}
+        class="mt-6"
+        id="deck-facility"
+        target="gallery-facility"
+      />
+      <div class="flex flex-col items-start text-left gap-6 max-md:px-8 px-0">
+        <Text type="h3" class="text-[#707861] !text-3xl"
+          >Lush green campus
+        </Text>
+        <!-- <div class="flex flex-row items-center">
+          <div class="w-[16px] h-[18px]">
+            <Image src={bulletStarGreen} class="w-full h-full object-cover" alt="bullet icon" />
+          </div>
+          <Text type="regular" class="font-bold ml-[10px]">8 acres of lush green campus</Text>
+        </div>  -->
+        <div class="flex flex-row items-center">
+          <div class="w-[16px] h-[18px]" set:html={starEarthy} />
+          <Text type="regular" class="font-bold ml-[10px]"
+            >CCTV Enabled Campus</Text
+          >
+        </div>
+        <div class="flex flex-row items-center">
+          <div class="w-[16px] h-[18px]" set:html={starEarthy} />
+          <Text type="regular" class="font-bold ml-[10px]"
+            >Digitally Enabled Classrooms</Text
+          >
+        </div>
+        <div class="flex flex-row items-center">
+          <div class="w-[16px] h-[18px]" set:html={starEarthy} />
+          <Text type="regular" class="font-bold ml-[10px]"
+            >GPS Enabled Buses</Text
+          >
+        </div>
+        <div class="flex flex-row items-center">
+          <div class="w-[16px] h-[18px]" set:html={starEarthy} />
+          <Text type="regular" class="font-bold ml-[10px]"
+            >Well-Equipped Sports Facilities</Text
+          >
+        </div>
+
+        <Text
+          type="sm"
+          class="uppercase text-[#707861] underline tracking-widest font-semibold cursor-pointer"
+          data-modal-target="gallery-facility"
+          data-target-deck="deck-facility"
+        >
+          View Facilities
+        </Text>
+
+        <div
+          class="xl:flex-row max-xl:flex-wrap items-center justify-center flex gap-5"
+        >
+          <div data-video-open="Pre-primary-tour">
+            <Button icon="play">Pre-Primary Tour</Button>
+          </div>
+          <div data-video-open="Senior-Secondary-Tour">
+            <Button icon="play">Senior Secondary Tour</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Constrain>
+
+  <!-- <Gallery
+    id="gallery-facility"
+    gallery={[
+      {
+        src: Library,
+        caption: "Spacious & Ventilated Classroom",
+      },
+      { src: Library, caption: "Well-stocked Library" },
+      { src: Library, caption: "Physics Lab" },
+      { src: Library, caption: " Chemistry Lab" },
+      { src: Library, caption: "Biology Lab" },
+      { src: Library, caption: "junior computer lab" },
+      { src: Library, caption: "senior computer lab" },
+      { src: Library, caption: "Innovative ATL Lab" },
+      { src: Library, caption: "Pre primary Activity Room" },
+      { src: Library, caption: "Basketball" },
+      { src: Library, caption: "Badminton" },
+      { src: Library, caption: "Cricket" },
+      ,
+    ]}
+  /> -->
+  <YoutubeEmbed embedId={"5OqhioNn5E8"} videoId="Pre-primary-tour" />
+  <YoutubeEmbed embedId={"BEgJr5_DMlY"} videoId="Senior-Secondary-Tour" />
+</div>

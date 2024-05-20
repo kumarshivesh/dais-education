@@ -1,0 +1,92 @@
+---
+import Text from "../system/Text.astro";
+import ourmission from '../../images/ourmission/ourmission.png'
+import tcisFilmPreview from '../../images/ourmission/npsAgaraFilmPreview.mp4'
+import play from '../../images/ourmission/Play-Circle.svg'
+import { Image } from "astro:assets";
+import YoutubeEmbed from './../YoutubeEmbed.astro';
+import '../../global.css'
+
+---
+
+<div class="lg:h-[600px] md:h-[670px] md:w-[1311px]  flex flex-col md:relative overflow-hidden play-on-hover mb-[45px] max-md:mb-[20px]">
+     <div class="md:h-auto   h-full w-full  md:w-[1162px]   md:absolute top-0 left-0">
+        <div class="relative">
+            <!-- <Image class="xl:w-[1162px] object-cover h-64 sm:h-auto " src={} alt={'ourmission'}/> -->
+            <video class="lazy object-cover object-center lg:h-[600px] md:h-[670px] md:w-[1311px]  sm:h-auto" loop playsinline muted poster={ourmission.src}>
+                <source data-src={tcisFilmPreview} type="video/mp4">
+            </video> 
+
+            <button data-video-open="tcisIntro1"  class="h-12 w-36 youtube md:hidden hover:bg-[#e1e1e2] transition-all duration-300 bg-[#022F96] shadow-sm gap-3 items-center flex absolute px-1 bottom-0  justify-center text-white">
+            <Image src={play} alt='play' class='h-8' />
+            <span class="text-sm font-black tracking-[-0.276px]">Watch Video</span>
+       </button>
+
+    </div>
+       <button data-video-open="tcisIntro"  class="h-[95px] w-[292px] youtube hidden hover:bg-[#0f3691] transition-all duration-300 bg-[#022F96] shadow-sm gap-3 absolute bottom-0 xl:flex items-center justify-center text-white">
+      
+
+        <Image src={play} alt='play' width={37} height={37} />
+        <span class="text-[27px] font-bold tracking-[-0.276px] ">Watch Video</span>
+       </button>
+
+    <div class="md:h-[418px]  h-auto xl:w-[715px] md:px-10 md:absolute bottom-0 md:hidden p-4 right-0 px-3 sm:px-4   text-start bg-[#F3F3F3] border border-[#7792CA]">
+        <Text type="sm" class="tracking-[3px] font-bold text-[1C1C1C] leading-5 uppercase font-[gotham]">our mission is to enable</Text>
+            <Text type="h2" class="font-bold text-[54px] md:mt-0 text-[1C1C1C] tracking-[-0.6px] font-[gothamMedium]">Passion for <span class="text-[#E84855]">Innovation</span></Text>
+        <Text type="base" class="text-[1C1C1C]  mt-5 md:mt-8" >We strive to foster holistic student development through overall enrichment, supported by innovative educational practices within efficient infrastructure</Text>
+    </div>
+    
+    </div>
+    <div class="hidden md:block h-auto md:w-[735px] md:absolute bottom-[10%]  right-0 px-4 md:p-[40px]  text-start bg-[#F3F3F3] border border-[#7792CA]">
+        <Text type="sm" class="tracking-[3px] font-bold text-[1C1C1C] leading-5 uppercase ">our mission is to enable</Text>
+            <Text type="h2" class=" text-[61px] tracking-[-1.22px] !font-[gothamMedium] font-[900] text-[#1C1C1C] py-8 pb-1">Passion for <span class="text-[#E84855]">Innovation</span></Text>
+        <Text type="lg" class="text-[1C1C1C] leading-[140%] -tracking-[0.48px] mt-5 md:mt-0" >We strive to foster holistic student development through overall enrichment, supported by innovative educational practices within efficient infrastructure.</Text>
+    </div>
+    <YoutubeEmbed embedId={'glziSsxYYnk'} videoId='tcisIntro' />
+    <YoutubeEmbed embedId={'glziSsxYYnk'} videoId='tcisIntro1' />
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+  
+      if ("IntersectionObserver" in window) {
+        var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(video) {
+            if (video.isIntersecting) {
+              for (var source in video.target.children) {
+                var videoSource = video.target.children[source];
+                if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                  videoSource.src = videoSource.dataset.src;
+                }
+              }
+  
+              video.target.load();
+              video.target.classList.remove("lazy");
+              lazyVideoObserver.unobserve(video.target);
+            }
+          });
+        });
+  
+        lazyVideos.forEach(function(lazyVideo) {
+          lazyVideoObserver.observe(lazyVideo);
+        });
+      }
+  
+      var playOnHoverTarget = document.querySelector(".play-on-hover");
+      var playOnHoverVideo = document.querySelector(".play-on-hover video");
+  
+  
+  
+      if ("IntersectionObserver" in window && window.innerWidth < 999) {
+      } else {
+        playOnHoverTarget?.addEventListener("mouseover", function() {
+          playOnHoverVideo?.play();
+        });
+        playOnHoverTarget?.addEventListener("mouseout", function() {
+          playOnHoverVideo?.pause();
+        });
+      }
+    });
+  </script>

@@ -1,0 +1,62 @@
+---
+import { fade } from "astro:transitions";
+import Text from "../system/Text.astro";
+
+interface Fact {
+title : string;
+count : string;
+subtitle : string;
+}
+
+
+const fastFact : Fact[] =[
+    {
+        title :'Student - Teachers',
+        count : '10:1' ,
+        subtitle: 'Ratio',
+    },
+    {
+        title :'Teaching Pool From',
+        count :'9',
+        subtitle: 'Countries',
+    },
+   
+    {
+        title :'Strength Per Class',
+        count :'<28',
+        subtitle: 'Students',
+    },
+    {
+        title :'Academic Performance 2023',
+        count :'>30%',
+        subtitle: 'In to Indian Ivy Leagues<br/> (IIT, NID, IISER etc.)',
+    }
+]
+
+---
+
+<div class=" w-full  sm:px-[60px] " >
+    <Text type="lg" class="text-[#BE2F35] font-black italic uppercase tracking-[2.572px] leading-[120%]">
+        Our Overview
+    </Text>
+    <div class="flex md:flex-row md:gap-2  gap-5 flex-col justify-between mt-4 md:mt-[30px]">
+        {
+            fastFact.map(
+                (facts,i,arr)=>
+                <>
+                <div class="flex-col gap-6 flex">
+                    <Text type="regular" class="text-[#564101] font-normal tracking-wide mb-[8px] uppercase text-start" set:html={facts.title}>
+                    </Text>
+                    <Text type="h2"  class="text-start  font-black text-[#BE2F35] flex gap-2 items-center" set:html={facts.count}>
+                     </Text>
+                    <Text type="h4"  class="text-start !text-[22px] !font-[500] text-[#564101]  flex gap-2 items-center" set:html={facts.subtitle}>
+                     </Text>
+                </div>
+                {
+                    i === arr.length-1 ? '' : 
+                    <div class="md:h-auto  border border-[rgba(190,47,53,0.3)] border-dashed"></div>
+                }
+                </>
+                 )}
+    </div>
+</div>

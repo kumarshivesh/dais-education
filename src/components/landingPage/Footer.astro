@@ -1,0 +1,120 @@
+---
+import logo from '../../img/footerLogo.png'
+import { Image } from 'astro:assets';
+import facebook from '../../icons/socials/Facebook.svg'
+import linkdin from '../../icons/socials/LinkedIn.svg'
+import instagram from '../../icons/socials/Instagram.svg'
+import twitter from '../../icons/socials/Twitter.svg'
+import youtube from '../../icons/socials/YouTube.svg'
+import emailIcon from '../../icons/Email.svg'
+import phoneIcon from '../../icons/Phone.svg'
+import locationIcon from '../../icons/Location.svg'
+import Text from '../system/Text.astro'
+import Constrain from '../system/Constrain.astro'
+// import theDotStudioLogo from '../../images/theDotStudioLogo.svg'
+import theDotStudioLogo from '../../img/theDotStudioLogo.png'
+import config from '../../config'
+
+
+const baseURL = 'https://navigate-designer-808266.framer.app/'
+const url = `https://www.thedotstudio.in/?utm_source=SchoolWebsite&utm_medium=footer&utm_content=`
+---
+<div
+  class='w-full md:p-[60px] max-md:py-[25px] flex flex-col items-center text-white bg-black'>
+  <div class='w-full max-md:px-6 max-md:pl-6'>
+    <Constrain class="flex flex-row gap-6 max-md:flex-col justify-between">
+      <div class="w-[426px] max-md:w-auto">
+        <Image src={logo} width={1200} alt="NPS Agra Logo" class="w-[240px] h-auto self-start" />
+        <div class='flex flex-row mt-6'>
+          <a target="_blank" href="https://www.facebook.com/npsagara/" class='mr-5  flex items-center justify-center rounded-full'>
+            <div class='h-[16px]'>
+              <img src={facebook.src} alt="Facebook Icon" class="w-full h-full">
+            </div>
+          </a>
+
+          <a target="_blank" href="https://www.instagram.com/npsagara/" class='mr-5  flex items-center justify-center rounded-full'>
+            <div class='h-[16px]'>
+              <img src={instagram.src} alt="Instagram Icon" class="w-full h-full">
+            </div>
+          </a>
+  
+          <a target="_blank" href="https://www.youtube.com/@npsagara7734" class='mr-5  flex items-center justify-center rounded-full'>
+            <div class='h-[16px]'>
+              <img src={youtube.src} alt="Youtube Icon" class="w-full h-full">
+            </div>
+          </a>
+  
+  
+        </div>
+      </div>
+  
+      <!-- <div class='flex flex-row gap-6 max-md:gap-0 max-md:flex-col'> -->
+        <div class='max-md:mt-8 max-md:mb-5 w-auto'>
+          <Text type={'sm'} class='mb-7 max-md:mb-3 text-[#76747F] uppercase tracking-[2.4px] font-[700]'>CONTact us</Text>
+  
+          <div class='flex flex-row items-center mb-3'>
+            <div class='w-5 flex-shrink-0'>
+              <Image src={emailIcon} alt="Email Icon" class="w-full h-full">
+            </div>
+            <div>
+              <a target='_blank' href="mailto:info@npsagara.com" class="hover:underline">
+                <Text type={'base'} class='ml-2 leading-[140%] text-[18px]'>info@npsagara.com</Text>
+              </a>
+            </div>
+          </div>
+  
+          <div class='flex flex-row items-center mb-3'>
+            <div class='w-5'>
+              <Image src={phoneIcon} alt="Phone Icon" class="w-full h-full">
+            </div>
+            <div>
+              <a target='_blank' href='tel:+917760844377' class="hover:underline"><Text type={'sm'} class='ml-2 text-[18px] leading-[140%]'>+91- 7996 666 777</Text></a>
+             
+            </div>
+  
+          </div>
+          <div class='flex flex-row items-start mb-3'>
+            <div class='w-5 flex-shrink-0'>
+              <Image src={locationIcon} alt="Phone Icon" class="w-full h-full">
+            </div>
+            <a target='_blank' href='https://www.google.com/maps/place/TCIS+-+Harlur/@12.8908132,77.6649174,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae134f77dc0481:0x71381eebeba64e4e!8m2!3d12.8908132!4d77.6674923!16s%2Fg%2F11b76drycx?entry=ttu' class="hover:underline"><Text type={'base'} class='ml-2 text-[18px] leading-[140%]'>#118/4, Agara Village, Kumbalagodu Road,<br class="max-md:hidden"> Tathaguni Post Kengeri, Hobli, Bengaluru,<br class="max-md:hidden"> Karnataka - 560062</Text></a>
+          </div>
+        </div>
+
+       
+        
+        
+      <!-- </div> -->
+    </Constrain>
+  </div>
+
+  <!-- <div class='w-full h-[1px] bg-gray-500/40 mt-12 max-md:mt-5 max-md:w-[85%]'></div> -->
+
+  <div class='pt-8  font-normal px-0 w-full  max-md:px-6 text-center'>
+    <Constrain class="flex flex-row max-md:flex-col items-center justify-between">
+      <div class="flex flex-row items-center max-md:flex-col">
+        <Text type="sm">Copyright © {new Date().getFullYear()}</Text>
+        <!-- <Text type={'sm'} class="ml-1 max-md:ml-0">
+          <span class="max-md:hidden">{' • '}</span>
+          <a 
+            href="https://www.winmoreacademy.com/privacy" 
+            class="underline"
+          >Privacy Policy</a>
+        </Text> -->
+      </div>
+      <div class="max-md:pt-3 pt-0"></div>
+      <div>
+        <a href={url} target="_blank" data-dot-studio-footer>
+          <Image src={theDotStudioLogo} class="w-[200px] max-md:w-[180px] max-md:mt-4 mt-0" alt={"Website Designed by The Dot Studio"} />
+        </a>
+      </div>
+    </Constrain>
+  </div>
+</div>
+
+<script>
+  const currentDomainBase = window.location.origin;
+    const dotStudioLogo = document.querySelector('[data-dot-studio-footer]');
+
+  dotStudioLogo.href = dotStudioLogo.href + currentDomainBase;
+</script>
