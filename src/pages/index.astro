@@ -10,7 +10,7 @@ import logo from '../assets/logo.png'
 import Section from "../components/system/Section.astro";
 import Text from "../components/system/Text.astro";
 import PracticeBook from '../components/utils/PracticeBook.astro';
-import Faqs from '../components/utils/faqs.astro'
+import Faqs from '../components/utils/faqs.astro';
 
 import Slide from '../components/system/Slide.astro';
 
@@ -26,15 +26,17 @@ import slide2MB from "../img/slides/mb/mb2.png";
 import slide3MB from "../img/slides/mb/mb3.png";
 import slide4MB from "../img/slides/mb/mb4.png";
 import NpsLogo from "../img/NPS-favIcon.png";
-import bgNpsLogo from "../img/bgNpsLogo.png"
-import ourVisionIcon1 from "../images/ourVision/ourVisionIcon1.png"
-import ourVisionIcon2 from "../images/ourVision/ourVisionIcon2.png"
+import bgNpsLogo from "../img/bgNpsLogo.png";
+import ourVisionIcon1 from "../images/ourVision/ourVisionIcon1.png";
+import ourVisionIcon2 from "../images/ourVision/ourVisionIcon2.png";
 
-import {cardData} from '../utils.ts'
+import {cardData} from '../utils.ts';
+
+import TopNavigationBar from "../components/templates/TopNavigationBar.astro";
 
 import Founder from "../assets/team/nita.png";
 import ViceChairperson from "../assets/team/isha.png";
-import FancyLine from '../assets/decorations/line.svg'
+import FancyLine from '../assets/decorations/line.svg';
 import OurOverview from '../components/OurOverview.astro';
 import BentoGrid from '../components/landingPage/BentoGrid.astro';
 
@@ -69,34 +71,12 @@ const team = [
 ---
 
 <Layout title="DIAS">
-	<main class="text-[#000000] text-[20px] leading-relaxed">
-	<!-- START: header -->
-	<header class="fixed w-full top-0 left-0 z-50 bg-[#fdfdfd] font-display font-black">
-    <div class="mx-auto flex justify-between items-center p-4">
-      <a href="#logo" class="flex items-center text-2xl font-bold no-underline gap-2">
-        <Image src={logo} alt="logoK" class="h-12 w-12" />
-        <span class="text-[1.2rem] font-bold md:text-[2rem]">DAIS</span>
-      </a>
-
-      <ul id="ul" class="hidden md:flex justify-between items-center gap-6 text-lg">
-        <li class="list-none mr-1"><a href="#home" class={navLink}>Home</a></li>
-        <li class="list-none mr-1"><a href="#about-us" class={navLink}>About Us</a></li>
-        <li class="list-none mr-1"><a href="#academics" class={navLink}>Academics</a></li>
-        <li class="list-none mr-1"><a href="#events" class={navLink}>Events</a></li>
-        <li class="list-none mr-1"><a href="#contact-us" class={navLink}>Contact Us</a></li>
-        <!-- <li><i class="nav-link fa-solid fa-moon"></i></li> -->
-      </ul>
-
-      <div id="hamburger" class="flex md:hidden border-none rounded-md text-base font-semibold py-2 px-3">
-        <i class=`fa-solid fa-bars ${faSolid} h-6 w-6`></i>
-        <!-- <img src="./images/bars-solid.svg" class="fa-solid fa-bars" alt="bars"> -->
-      </div>
-    </div>
-  </header>
-  <!-- END: header -->
-
+	<main class="text-[20px] leading-relaxed">
 	 <!-- START: hero -->
    <div class='flex flex-col max-md:h-auto min-h-[100svh] relative'>
+    <!-- START: header -->
+    <TopNavigationBar />
+    <!-- END: header -->
     <div class="w-full flex-1 h-full relative p-12  max-md:mt-[70px] py-2 flex flex-row max-md:flex-col justify-between items-center max-md:p-8 max-md:px-4">
       <div class="w-full h-full absolute top-0 left-0 max-md:hidden">
         <Slide
@@ -166,13 +146,6 @@ const team = [
 
 	<!-- START: about-us -->
   <section id="about" class="py-10 text-center">
-    <div class="mx-auto px-8">
-      <div class={mainInfo}>
-        <h2 class={mainTitle}>About Us</h2>
-        <p class={mainDescription}>Dhirubhai Ambani International School is a K-12 co-educational International Day School established in 2003, with a view to offering world-class educational opportunities in the city of Mumbai. The School is affiliated to the CISCE (Council for the Indian School Certificate Examinations) and CAIE (Cambridge Assessment International Education), and prepares students for the ICSE (Indian Certificate of Secondary Education) and the IGCSE (International General Certificate of Secondary Education) Year 10 examinations. For Years 11 and 12, we are authorised by the IB (International Baccalaureate) to offer the IB Diploma Programme. The student body, comprising 1,087 students, reflects the cultural diversity of India. The school has 187 teachers, with 27 being expatriates. With a teacher-student ratio of 1:6, every child enjoys individualised attention. The School is recognised as India's premier international school, and is also among the top IB schools globally.</p>
-      </div>
-    </div>
-
     <div class="flex flex-row max-lg:flex-col justify-items-start gap-[20px] h-fit max-md:h-auto px-11 mt-[20px]">
       {team.map((testimonial, index) => (
         <div data-gsap data-delay={0.3 + index * 0.3} data-y={100} data-duration={0.7}  class="flex-1 flex border-[2.5px] border-[#E2E2E2] overflow-hidden flex-row max-md:flex-col w-full bg-white rounded-[12px]">
@@ -287,7 +260,6 @@ const team = [
 
   <Footer />
 	<script>
-   import "../scripts/menu.js";
    import collapsible, {
     openCollapsible,
   } from "../components/system/collapsible";
